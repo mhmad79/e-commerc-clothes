@@ -25,9 +25,10 @@ const Header = () => {
 
         {/* قائمة التنقل */}
         <nav
-          className={`${
-            isOpen ? 'block' : 'hidden'
-          } absolute top-16 left-0 bg-gray-800 text-center py-4 md:static md:flex md:items-center md:space-x-6 md:bg-transparent md:text-left md:p-0 md:block`}
+            className={`${
+              isOpen ? 'block' : 'hidden'
+            } nav-transition absolute top-16 left-0 bg-gray-800 text-center py-4 md:static w-full md:w-auto md:items-center md:space-x-6 md:bg-transparent md:text-left md:p-0 md:block`}
+            
         >
           <Link href="/category/electronics" className="block py-2 md:inline-block mx-4">
             Electronics
