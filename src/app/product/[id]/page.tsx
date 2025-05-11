@@ -3,12 +3,21 @@
 import { useCart } from '@/app/context/CartContext';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import Image from 'next/image'; // استيراد Image من next/image
+import Image from 'next/image';
+
+// تحديد نوع المنتج
+type Product = {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+  description: string;
+};
 
 export default function ProductPage() {
   const { id } = useParams();
   const { addToCart } = useCart();
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [cartStatus, setCartStatus] = useState<string>(''); // لتخزين حالة السلة (تمت الإضافة)
 
   useEffect(() => {
@@ -16,25 +25,27 @@ export default function ProductPage() {
 
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then(res => res.json())
-      .then(setProduct);
+      .then((data: Product) => setProduct(data));
   }, [id]);
 
   const handleAddToCart = () => {
-    addToCart({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      image: product.image,
-      quantity: 1,
-    });
+    if (product) {
+      addToCart({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image,
+        quantity: 1,
+      });
 
-    // تحديث حالة السلة
-    setCartStatus('تم إضافة المنتج إلى السلة!');
+      // تحديث حالة السلة
+      setCartStatus('تم إضافة المنتج إلى السلة!');
 
-    // بعد 3 ثوانٍ، اختفاء الرسالة
-    setTimeout(() => {
-      setCartStatus('');
-    }, 3000); // الرسالة ستختفي بعد 3 ثوانٍ
+      // بعد 3 ثوانٍ، اختفاء الرسالة
+      setTimeout(() => {
+        setCartStatus('');
+      }, 3000); // الرسالة ستختفي بعد 3 ثوانٍ
+    }
   };
 
   if (!product) return <div>Loading...</div>;
@@ -49,6 +60,7 @@ export default function ProductPage() {
           width={256} // عرض الصورة
           height={256} // ارتفاع الصورة
           className="object-contain mb-4"
+          unoptimized={false} // تحسين الصورة
         />
         <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
         <p className="text-gray-700 mb-2">${product.price}</p>
