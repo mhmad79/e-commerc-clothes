@@ -17,9 +17,12 @@ type CategoryPageProps = {
 };
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const { categoryName } = params
-  const res = await fetch(`https://fakestoreapi.com/products/category/${categoryName}`);
-  
+  const { categoryName } = params;
+
+  const res = await fetch(
+    `https://fakestoreapi.com/products/category/${encodeURIComponent(categoryName)}`
+  );
+
   if (!res.ok) {
     notFound();
   }
