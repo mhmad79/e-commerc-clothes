@@ -14,7 +14,6 @@ const Header = () => {
           MyStore
         </Link>
 
-        {/* زر الهامبرغر للشاشات الصغيرة */}
         <button
           className="md:hidden"
           onClick={() => setIsOpen(!isOpen)}
@@ -23,7 +22,6 @@ const Header = () => {
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
-        {/* قائمة التنقل */}
         <nav
             className={`${
               isOpen ? 'block' : 'hidden'
@@ -37,10 +35,10 @@ const Header = () => {
             Jewelry
           </Link>
           <Link href="/category/men's clothing" className="block py-2 md:inline-block mx-4">
-            Men's Clothing
+            Men&apos;s Clothing
           </Link>
           <Link href="/category/women's clothing" className="block py-2 md:inline-block mx-4">
-            Women's Clothing
+            Women&apos;s Clothing
           </Link>
           <Link href="/cart" className="block py-2 md:inline-block mx-4 text-green-400">
             🛒 Cart
