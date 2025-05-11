@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 import { notFound } from 'next/navigation';
 import ProductCard from '@/components/productsCart';
 
@@ -12,13 +10,11 @@ type Product = {
   category: string;
 };
 
-type CategoryPageProps = {
-  params: {
-    categoryName: string;
-  };
-};
-
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({
+  params,
+}: {
+  params: { categoryName: string };
+}) {
   const rawCategoryName = params.categoryName;
   const categoryName = decodeURIComponent(rawCategoryName);
 
