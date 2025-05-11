@@ -1,6 +1,7 @@
 'use client';
 
 import { useCart } from "../context/CartContext";
+import Image from 'next/image';
 
 export default function CartPage() {
   const { cartItems } = useCart();
@@ -19,7 +20,14 @@ export default function CartPage() {
       <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
       {cartItems.map((item) => (
         <div key={item.id} className="flex items-center mb-4 border p-4 rounded">
-          <img src={item.image} alt={item.title} className="w-16 h-16 object-contain mr-4" />
+          {/* استخدم Image بدلاً من img */}
+          <Image 
+            src={item.image} 
+            alt={item.title} 
+            width={64} 
+            height={64} 
+            className="object-contain mr-4"
+          />
           <div>
             <h2 className="text-lg">{item.title}</h2>
             <p>Quantity: {item.quantity}</p>
