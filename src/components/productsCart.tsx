@@ -11,19 +11,23 @@ type Product = {
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <div className="bg-white rounded shadow p-4">
+    <div className="bg-white flex flex-col items-center justify-between rounded shadow p-4">
       <Image
         src={product.image}
         alt={product.title}
         width={200}
         height={200}
         className="object-contain mb-4"
-      />
-      <h3 className="font-bold">{product.title}</h3>
-      <p>${product.price}</p>
-      <Link href={`/product/${product.id}`} className="btn btn-primary mt-4">
-        View Details
-      </Link>
+        layout="intrinsic"      />
+        <div>
+          <h3 className="font-bold">{product.title}</h3>
+          <p>${product.price}</p>
+          <Link href={`/product/${product.id}`} className="btn btn-primary mt-4">
+            View Details
+          </Link>
+        </div>
+      
+      
     </div>
   );
 };
