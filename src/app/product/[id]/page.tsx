@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useCart } from '@/app/context/CartContext';
@@ -205,9 +206,16 @@ export default function ProductPage() {
             <span className="title-font font-medium text-2xl text-gray-900">
             ${product.price}
             </span>
-            <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-              Button
-            </button>
+            <button
+          onClick={handleAddToCart}
+          className="mt-3 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg"
+        >
+          Add to Cart
+        </button>
+
+        {cartStatus && (
+          <div className="mt-2 text-green-400 font-medium">{cartStatus}</div>
+        )}
             <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
               <svg
                 fill="currentColor"
