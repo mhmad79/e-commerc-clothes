@@ -7,8 +7,8 @@ type Product = {
   title: string;
   price: number;
   image: string;
-  description: string;
-  category: string;
+  description?: string;
+  category?: string;
 };
 
 export default async function Products() {

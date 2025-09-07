@@ -11,7 +11,7 @@ type Product = {
   title: string;
   price: number;
   image: string;
-  description: string;
+  description?: string;
 };
 
 export default function ProductPage() {
